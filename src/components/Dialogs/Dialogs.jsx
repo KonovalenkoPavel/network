@@ -3,15 +3,28 @@ import dialogsCSS from "./Dialogs.module.css";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Massage/Message";
 import { Redirect } from "react-router-dom";
+import { Field, reduxForm } from "redux-form";
+
+const DialogsFormMessage = (props) => {
+  return (
+    <form className={dialogsCSS.dialogsItems} onSubmit={props.handleSubmit}>
+      <div>
+        <Field component="textarea" name="dialogsFormTextarea" />
+      </div>
+      <div>
+        <button>Add</button>
+      </div>
+    </form>
+  );
+};
+
+const DialogsFormMessageReduxForm = reduxForm({ form: "dialogsMeaasage" })(
+  DialogsFormMessage
+);
 
 const Dialogs = (props) => {
-  const addMessage = () => {
-    props.addMessage();
-  };
-
-  const onMessageChange = (e) => {
-    let text = e.target.value;
-    props.onMessageChange(text);
+  const addMessage = (dataForm) => {
+    props.addMessage(dataForm.dialogsFormTextarea);
   };
 
   if (!props.isAuth) return <Redirect to="/login" />;
@@ -40,17 +53,7 @@ const Dialogs = (props) => {
             );
           })}
         </div>
-        <div className={dialogsCSS.dialogsItems}>
-          <div>
-            <textarea
-              value={props.dialogPage.newMessageText}
-              onChange={(e) => onMessageChange(e)}
-            ></textarea>
-          </div>
-          <div>
-            <button onClick={addMessage}>Add</button>
-          </div>
-        </div>
+        <DialogsFormMessageReduxForm onSubmit={addMessage} />
       </div>
     </>
   );
