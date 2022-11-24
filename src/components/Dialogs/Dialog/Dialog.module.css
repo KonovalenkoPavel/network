@@ -1,0 +1,13 @@
+.dialog {
+  text-decoration: none;
+  color: white;
+}
+
+.activeLink {
+  color: gold;
+}
+
+.personLogo img {
+  width: 50px;
+  border-radius: 50%;
+}

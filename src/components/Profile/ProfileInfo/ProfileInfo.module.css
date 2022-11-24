@@ -1,0 +1,12 @@
+.mainFoto {
+  height: 200px;
+  justify-content: center;
+}
+
+.mainFotoConteiner {
+  display: flex;
+}
+
+.ava {
+  padding: 10px;
+}

@@ -1,0 +1,17 @@
+.image img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.selectedPage {
+  font-weight: bold;
+  color: red;
+}
+
+.pages {
+  padding: 15px;
+}
+
+.loader {
+  width: 100px;
+}
