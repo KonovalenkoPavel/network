@@ -14,7 +14,7 @@ class ProfileConteiner extends React.Component {
   componentDidMount() {
     let profileId = this.props.location.pathname.split("/")[2];
     if (!profileId || profileId === ":userId") {
-      profileId = 26350;
+      profileId = this.props.autorizedUserId;
     }
 
     this.props.setProfileTC(profileId);
@@ -37,6 +37,8 @@ class ProfileConteiner extends React.Component {
 let mapStateToProps = (state) => ({
   profile: state.profilePage.userProfile,
   status: state.profilePage.status,
+  autorizedUserId: state.auth.userProfile,
+  isAuth: state.auth.isAuth,
 });
 
 export default compose(
