@@ -19,11 +19,9 @@ class ProfileStatus extends React.Component {
     this.props.updateStatus(this.state.statusChange);
   };
   handleStatusChange = (event) => {
-    console.log("handleStatusChange");
     this.setState({ ...this.state, statusChange: event.target.value });
   };
   handleToggleStausChange = () => {
-    console.log("handleToggleStausChange");
     this.setState({
       ...this.state,
       editMode: !this.state.editMode,
@@ -32,7 +30,6 @@ class ProfileStatus extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("update");
     if (prevProps.status !== this.props.status) {
       this.setState({ state: this.props.status });
     }
