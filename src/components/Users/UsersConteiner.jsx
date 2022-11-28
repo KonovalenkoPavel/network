@@ -12,15 +12,23 @@ import React from "react";
 import Preloader from "../common/Preloader";
 import withAuthRedirect from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
+import {
+  getCurrentPage,
+  getFollowingInProgress,
+  getIsFetching,
+  getPageSize,
+  getTotalUsersCount,
+  getUsersFromState,
+} from "../../redux/users-selectors";
 
 let mapStateToProps = (state) => {
   return {
-    users: state.usersPage.users,
-    pageSize: state.usersPage.pageSize,
-    currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
-    totalUsersCount: state.usersPage.totalUsersCount,
-    followingInProgress: state.usersPage.followingInProgress,
+    users: getUsersFromState(state),
+    pageSize: getPageSize(state),
+    currentPage: getCurrentPage(state),
+    isFetching: getIsFetching(state),
+    totalUsersCount: getTotalUsersCount(state),
+    followingInProgress: getFollowingInProgress(state),
   };
 };
 
